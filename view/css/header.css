@@ -1,0 +1,49 @@
+body{
+    font-family: "Roboto", sans-serif;
+}
+header{
+    padding: 0.8rem;
+    /* background-color: aliceblue; */
+}
+.header-wrapper{
+    display: flex;
+    justify-content: space-around;
+}
+.top-bar, .seach{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+div{
+    display: block;
+}
+ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    list-style: none;
+}
+img{
+    width: 60%;
+    height: auto;
+}
+img.logo{
+    width: 120%;
+    height: auto;
+}
+
+/* -------------------------------------------------------- */
+:root {
+    --font-size: 1.1rem;
+    --font-weight: 500;
+    --text-color: #1e1b16;
+}
+
+.menu-link {
+    font-size: var(--font-size); 
+    font-weight: var(--font-weight); 
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text-color); 
+}

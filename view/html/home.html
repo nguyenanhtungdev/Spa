@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ</title>
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+</head>
+<body>
+    <div class="container">
+        <div id="header"></div>
+        <main>
+            <section>
+                <div class="slide-wrapper"></div>
+                    <div class="slideshow-container">
+                        <div class="mySlides fade">
+                        <img src="/image/header-anh1.jpg" style="width:100%">
+                        </div>
+                        <div class="mySlides fade">
+                        <img src="/image/header-anh2.jpg" style="width:100%">
+                        </div>
+                        <div class="mySlides fade">
+                        <img src="/image/header-anh3.jpg" style="width:100%">
+                        </div>
+        
+                        <!-- Nút điều khiển -->
+                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                    </div>
+                  </div>
+            </section>
+            <div class="content-1">
+                <div class="content-1__box-1">
+                    <div class="title d-flex">
+                        <div>
+                            <h1>HỌC VIỆN THẨM MỸ DIVA</h1>
+                        </div>
+                        <div>
+                            <button class="custom-button">Xem chi tiết</button>
+                        </div>
+                    </div>
+                    <div class="text color-1">
+                        DIVA ACADEMY - Học viện thẩm mỹ hàng đầu tại Việt Nam. Đã giúp cho hàng ngàn học viên thực hiện ước mơ chinh phục ngành 
+                        làm đẹp, mang lại giá trị thiết thực cho cộng đồng và xã hội. Với đội ngũ giảng viên giàu kinh nghiệm và trang thiết bị hiện 
+                        đại, học viện cam kết đào tạo ra những chuyên viên thẩm mỹ chuyên nghiệp và tài năng.
+                    </div>
+                    <div class="option d-flex">
+                        <div class="option_box"></div>
+                        <div class="option_box"></div>
+                        <div class="option_box"></div>
+                        <div class="option_box"></div>
+                    </div>
+                </div>
+                <div class="content-1__box-2"></div>
+            </div>
+        </main>
+        <div id="footer"></div>
+    </div>
+    <script src="/controller/home.js"></script>
+    <script src="/controller/slide-show.js"></script>
+</body>
+</html>
