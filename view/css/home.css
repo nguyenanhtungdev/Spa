@@ -6,7 +6,20 @@
 }
 body{
     line-height: 1.5;
-    font-family: "Poppins", sans-serif;
+    font-family: 'open sans', sans-serif;
+}
+/*create*/
+.d-flex{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+.effect{
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px 4px #eaeaea;
+    transition: transform 0.8s ease;
 }
 
 .content-1{
@@ -18,26 +31,20 @@ body{
     color: #d9b061;
     
 }
-.option{
-    padding: 3.7rem 0;
-    box-sizing: border-box;
-}
-.option_box{
-    width: 23%;
-    height: 28vh;
-    background: radial-gradient(circle, #f6e27d, #d4a531);/*Từ trong lan tỏa ra ngoài*/
-    border-radius: 10px;
-}
 .text{
     margin-top: 1.7rem;
 }
 .justify-text {
     text-align: justify;
 }
+.title{
+    display: flex;
+    justify-content: space-between;
+}
 
 /* Slide show */
 .slideshow-container {
-    position: relative;
+    position: relative; /*Làm gốc cho cái menu*/
     max-width: 100%;
     overflow: hidden;
 }
@@ -53,6 +60,7 @@ img.img-SlideShow {
     width: 100%;
     height: auto;
 }
+
   /* Nút điều khiển */
 .prev, .next {
     cursor: pointer;
@@ -90,9 +98,15 @@ img.img-SlideShow {
 }
 /* Hiệu ứng khi di chuột qua nút */
 .custom-button:hover {
-    background-color: #bea336; /* Màu nền khi hover */
+    background-color: #FFFFFF; /* Màu nền khi hover */
     transform: translateY(-2px); /* Dịch chuyển nhẹ lên trên khi hover */
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Bóng đổ rõ hơn khi hover */
+    border: 1px solid #e6c959;
+    color: #e6c959;
+}
+.custom-button1:hover{
+    background-color: #bea336;
+    color: #FFFFFF;
 }
 /* Hiệu ứng khi nhấn nút */
 .custom-button:active {
@@ -106,18 +120,102 @@ img.img-SlideShow {
     font-size: 1.2rem;
     color:  #666;
 }
-.d-flex{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    column-gap: 20px;
-    row-gap: 20px;
-}
+
 
 a{
     list-style: none;
 }
+
+/*Option-box*/
+.option{
+    column-gap: 20px;
+    row-gap: 20px;
+    padding: 3.7rem 0;
+    box-sizing: border-box;
+}
+.option_box{
+    width: 23%;
+    height: 28vh;
+    background: radial-gradient(circle, #f6e27d, #d4a531);/*Từ trong lan tỏa ra ngoài*/
+}
+.option_box:hover {
+    transform: scale(1.1);
+}
+.option1_box:hover {
+    transform: scale(1.05);
+}
+.option_box, .option1_box{
+    position: relative;
+    color: white;
+    text-align: center;
+    font-family: Arial, sans-serif; /* Hoặc font khác bạn muốn */
+    
+}
+.number-about {
+    font-size: 58px; /* Điều chỉnh kích thước số */
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.option_box a{
+    position: relative;
+    text-decoration: none;
+    color: white;   
+}
+.option_box a{
+    text-align: left;
+}
+/*Option1-box*/
+.option1{
+    justify-content: start;
+    column-gap: 1.4rem;
+}
+.option1_box{
+    background-color: #FFFFFF;
+    max-width: 370px;
+    min-height: 200px;
+    margin-top: 2.7rem;
+    color: #a08414;
+    text-align: justify;
+    box-sizing: border-box;
+}
+img.option1_box__image{
+    width: 100%;
+    border-radius: 10px;
+}
+.option1__icon{
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    font-size: 13px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.option1__icon li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.option1_box__text{
+    color:  #666;
+    line-height: 1.3;
+    margin-top: 15px;
+}
+.option1_box__text p {
+    min-height: 13vh;
+}
+.option1_box__title h3{
+    text-transform: uppercase;
+}
+.custom-button1{
+    background-color: #FFFFFF;
+    border: 1px solid #e6c959;
+    color: #e6c959;
+}
+
+
 
 /* responsive */
 @media(max-width: 1400px){
@@ -137,20 +235,37 @@ a{
         margin: 0 auto;
         padding: 4rem;
     }
+    .title{
+        display: flex;
+        flex-direction: column;
+    }
 }
 @media(max-width: 700px){
-    .option_box{
-        width: 90%;
+    .option, .option1{
+        padding: 2rem 1.5rem;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        max-width: 100%;
+        overflow: hidden;
+    }
+    .option_box, .option1_box{
+        min-width: 80%;
+        transition: transform 0.8s ease-in-out;
     }
     .content-1{
         width: 97%;
         margin: 0 auto;
         padding: 1rem;
     }
-    .d-flex{
-        justify-content: center;
-    }
     img.img-SlideShow {
         height: 25vh;
+    }
+    .option1_box{
+        font-size: 16px;
+    }
+    .color-1{
+        font-size: 1rem;
+        color:  #666;
     }
 }

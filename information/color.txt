@@ -1,5 +1,2 @@
-Background: #FFFFFF
-text: #1e1b16
-Background1: #FFFCED
-footer: #E2E2E2
-text_footer: #051B81, #333
+boxshadow: #eaeaea
+rơ chuột vào:#eaeaea

@@ -78,4 +78,7 @@ footer{
     .footer-col{
         width: 50%;
     }
+    footer{
+        padding: 25px 0;
+    }
 }

@@ -1,8 +1,10 @@
+//Slide show image
 let slideIndex = 1;
 
 autoSlide()
 showSlides(); // Gọi hàm để khởi động slideshow
-
+autoSlide1()
+showSlides1(); // Gọi hàm để khởi động slideshow
 // Điều khiển chuyển slide
 function plusSlides(n) {
   showSlides(slideIndex += n);
