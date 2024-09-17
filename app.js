@@ -4,9 +4,10 @@ const port = 3000;
 const path = require('path')
 
 // Cấu hình để phục vụ file tĩnh từ thư mục "public"
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));//Cấu hình trong thư mục punlic chứa các file image và css
 // Require user route
-const homeRoute = require('./router/home');
+const homeRoute = require('./router/home_router');
+const contactRouter = require('./router/contact_router')
 
 app.set('views', './view');
 app.set('view engine', 'ejs');
@@ -17,6 +18,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // Sử dụng homeRoute khi truy cập vào /home
 app.use('/home', homeRoute);
+
+app.use('/contact',contactRouter)
 
 app.listen(port, function() {
     console.log('Your app running on port ' + port);

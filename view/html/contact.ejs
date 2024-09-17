@@ -4,15 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liên hệ</title>
-    <link rel="stylesheet" href="../css/contact.css">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/footer.css">
+
+    <link rel="icon" href="/image/icon_web.jpg" type="image/x-icon">
+    <link rel="shortcut icon" href="/image/icon_web.jpg"type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/contact.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 <body>
     <div class="container">
-        <div id="header"></div>
+        <!-- Include header -->
+        <%- include('../partials/header') %>
         <main>
             <h2>Thông tin liên hệ</h2>
             <div class="content">
@@ -46,7 +51,11 @@
                     </div>
                     <div class="form-container">
                         <h3>Phản hồi của bạn</h3>
-                        <form action="/submit_feedback" method="post">
+                        <!-- Hộp thoại -->
+                        <div id="dialog" class="dialog">
+                            <p>Gửi phản hồi thành công!</p>
+                        </div>
+                        <form action="/contact" method="POST">
                             <label for="name">Họ và tên:</label>
                             <input type="text" id="name" name="name" placeholder="Nhập họ tên của bạn" required>
                 
@@ -58,7 +67,8 @@
                 
                             <div class="button-group">
                                 <button type="reset" class="cancel-btn">Hủy bỏ</button>
-                                <button type="submit" class="submit-btn">Gửi phản hồi</button>
+                                <!-- submit nó sẽ tải lại trang và khiến cái hộp thoại nó ko hiện lên được -->
+                                <button type="button" class="submit-btn" id="openDialog">Gửi phản hồi</button> 
                             </div>
                         </form>
                     </div>
@@ -68,8 +78,22 @@
                 </div>
             </div>
         </main>
-        <div id="footer"></div>
+        <!-- Include footer -->
+        <%- include('../partials/footer') %>
     </div>
-    <script src="/controller/home.js"></script>
+    <script>
+        document.getElementById('openDialog').addEventListener('click',()=>{
+            var name  = document.getElementById('name')
+            var email  = document.getElementById('email')
+            var sdt  = document.getElementById('phone')
+
+            if(name && email && phone){
+                document.getElementById('dialog').style.display = 'block'
+            }
+            else{
+                alert('Vui lòng nhập đầy đủ thông tin')
+            }
+        })
+    </script>
 </body>
 </html>

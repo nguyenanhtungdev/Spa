@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang Chủ</title>
+
+    <link rel="icon" href="/image/icon_web.jpg" type="image/x-icon">
+    <link rel="shortcut icon" href="/image/icon_web.jpg"type="image/x-icon">
+
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
@@ -12,7 +16,8 @@
 </head>
 <body>
     <div class="container">
-        <div id="header"></div>
+            <!-- Include header -->
+        <%- include('../partials/header') %>
         <main>
             <section>
                 <div class="slide-wrapper">
@@ -221,10 +226,11 @@
                 </div>                    
             </div>
         </main>
-        <div id="footer"></div>
+        <!-- Include footer -->
+        <%- include('../partials/footer') %>
     </div>
-    <script src="/controller/header.js"></script>
-    <script src="/controller/home.js"></script>
-    <script src="/controller/slide-show.js"></script>
+    <script src="/javascript/header.js"></script>
+    <script src="/javascript/process.js"></script>
+    <script src="/javascript/slide-show.js"></script>
 </body>
 </html>
