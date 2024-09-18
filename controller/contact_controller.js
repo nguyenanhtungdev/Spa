@@ -4,6 +4,9 @@ module.exports = {
     page_contact: (req,res)=>{
         res.render('html/contact')
     },
+    page_introduct: (req,res) =>{
+        res.render('html/introduce')
+    },
     post_create: (req, res) => {
         // Loại bỏ trường 'done' khỏi kiểm tra
         const { done, ...dataa } = req.body;

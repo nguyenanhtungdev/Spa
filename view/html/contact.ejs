@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
 </head>
 <body>
     <div class="container">
@@ -53,16 +54,25 @@
                         <h3>Phản hồi của bạn</h3>
                         <!-- Hộp thoại -->
                         <div id="dialog" class="dialog">
-                            <p>Gửi phản hồi thành công!</p>
+                            <p id="message">Gửi phản hồi thành công!</p>
                         </div>
-                        <form action="/contact" method="POST">
-                            <label for="name">Họ và tên:</label>
+                        <form action="/contact" method="POST" id="contactForm">
+                            <div>
+                                <label for="name">Họ và tên:</label>
+                                <span id="nameErr" class="spanErr">(*)</span>
+                            </div>
                             <input type="text" id="name" name="name" placeholder="Nhập họ tên của bạn" required>
                 
-                            <label for="email">Email:</label>
+                            <div>
+                                <label for="email">Email:</label>
+                                <span id="emailErr" class="spanErr">(*)</span>
+                            </div>
                             <input type="email" id="email" name="email" placeholder="Nhập email của bạn" required>
                 
-                            <label for="phone">Số điện thoại:</label>
+                            <div>
+                                <label for="phone">Số điện thoại:</label>
+                                <span id="phoneErr" class="spanErr">(*)</span>
+                            </div>
                             <input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại của bạn" required>
                 
                             <div class="button-group">
@@ -81,19 +91,76 @@
         <!-- Include footer -->
         <%- include('../partials/footer') %>
     </div>
-    <script>
-        document.getElementById('openDialog').addEventListener('click',()=>{
-            var name  = document.getElementById('name')
-            var email  = document.getElementById('email')
-            var sdt  = document.getElementById('phone')
+    <script>   
+        const addClickListener = (id, callback) => {
+            document.getElementById(id).addEventListener('blur', callback);
+        };
 
-            if(name && email && phone){
+        addClickListener('name', checkName);
+        addClickListener('email', checkEmail);
+        addClickListener('phone', checkPhone); 
+        document.getElementById('openDialog').addEventListener('click', (event) => {  
+            // Ngăn form submit ngay lập tức
+            event.preventDefault(); 
+        
+            // Gọi hàm kiểm tra mà không cần truyền tham số
+            if (checkEmail() && checkName() && checkPhone()) {
+                document.getElementById('dialog').style.display = 'block';
+                // Hiển thị thông báo thành công
+        
+                // Trì hoãn việc submit form trong 2 giây để người dùng kịp xem thông báo
+                setTimeout(() => {
+                    document.getElementById('contactForm').submit();
+                }, 2000); // Thời gian trì hoãn 2 giây
+            } else {
                 document.getElementById('dialog').style.display = 'block'
+                document.getElementById('message').innerText = 'Vui lòng nhập đầy đủ thông tin!'
+                document.getElementById('dialog').style.backgroundColor = '#dc143c' 
             }
-            else{
-                alert('Vui lòng nhập đầy đủ thông tin')
+        });
+        
+        function checkName() {
+            var name = document.getElementById('name').value.trim();
+            if (!name || name.length === 0) {
+                document.getElementById('nameErr').innerHTML = 'Tên không được bỏ trống';
+                return false;
+            } else if (!/\w+$/.test(name)) {
+                document.getElementById('nameErr').innerHTML = 'Tên không được chứa ký tự đặc biệt';
+                return false;
+            } else {
+                document.getElementById('nameErr').innerHTML = '';
+                return true;
             }
-        })
-    </script>
+        }
+        
+        function checkEmail() {
+            var email = document.getElementById('email').value.trim();
+            if (!email || email.length === 0) {
+                document.getElementById('emailErr').innerHTML = 'Email không được bỏ trống';
+                return false;
+            } else if (!/^\w+@gmail.com$/.test(email)) {
+                document.getElementById('emailErr').innerHTML = 'Email không đúng định dạng';
+                return false;
+            } else {
+                document.getElementById('emailErr').innerHTML = '';
+                return true;
+            }
+        }
+        
+        function checkPhone() {
+            var sdt = document.getElementById('phone').value.trim();
+            if (!sdt || sdt.length === 0) {
+                document.getElementById('phoneErr').innerHTML = 'Số điện thoại không được bỏ trống';
+                return false;
+            } else if (!/^0\d{9}$/.test(sdt)) {
+                document.getElementById('phoneErr').innerHTML = 'Số điện thoại không đúng định dạng';
+                return false;
+            } else {
+                document.getElementById('phoneErr').innerHTML = '';
+                return true;
+            }
+        }
+        
+    </script>    
 </body>
 </html>
